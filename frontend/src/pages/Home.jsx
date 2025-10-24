@@ -1,7 +1,7 @@
-import { Sidebar } from './HomeComponents.jsx';
-import { RecentExpenses } from './HomeComponents.jsx';
-import { QuickAccess } from './HomeComponents.jsx';
-import { MonthlyReport } from './HomeComponents.jsx';
+import { Sidebar } from "../components/Sidebar";
+import { RecentExpenses } from "../components/RecentExpenses";
+import { QuickAccess } from "../components/QuickAccess";
+import { MonthlyReport } from "../components/MonthlyReport";
 
 export default function HomePage() {
   return (
