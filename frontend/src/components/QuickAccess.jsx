@@ -1,3 +1,5 @@
+import { PlusCircle, FilePlus2, BarChart3 } from "lucide-react";
+
 export function QuickAccess() {
   const actions = [
     { label: "New expense", icon: <PlusCircle size={22} />, color: "bg-pink-700" },
