@@ -1,4 +1,4 @@
-import { Home, FileText, Plane, CheckCircle, Settings, Phone } from "lucide-react";
+import { Home, FileText, Plane, CheckCircle, Settings, Phone, FolderArchiveIcon, Folder, GitGraphIcon, LogOut, LogOutIcon, ChartBar, FolderOpenDot } from "lucide-react";
 import { PlusCircle, FilePlus2, BarChart3 } from "lucide-react";
 import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer } from "recharts";
 
@@ -7,10 +7,10 @@ export function Sidebar() {
   const menuItems = [
     { name: "Home", icon: <Home size={20} />, active: true },
     { name: "Expenses", icon: <FileText size={20} /> },
-    { name: "Trips", icon: <Plane size={20} /> },
-    { name: "Approvals", icon: <CheckCircle size={20} /> },
+    { name: "Categories", icon: <FolderOpenDot size={20} /> },
+    { name: "Reports", icon: <ChartBar size={20} /> },
     { name: "Settings", icon: <Settings size={20} /> },
-    { name: "Support", icon: <Phone size={20} /> },
+    { name: "Logout", icon: <LogOutIcon size={20} /> },
   ];
 
   return (
@@ -70,7 +70,7 @@ export function RecentExpenses() {
   ];
 
   return (
-    <div className="bg-[#1d1d1d] rounded-2xl p-4 text-gray-200 w-min">
+    <div className="bg-[#1d1d1d] rounded-2xl p-4 text-gray-200 ">
       <h3 className="text-lg font-semibold mb-3">Recent Expenses</h3>
       <table className="w-full text-sm">
         <thead>
@@ -109,7 +109,6 @@ export function QuickAccess() {
     { label: "New expense", icon: <PlusCircle size={22} />, color: "bg-pink-700" },
     { label: "Add receipt", icon: <FilePlus2 size={22} />, color: "bg-purple-700" },
     { label: "Create report", icon: <BarChart3 size={22} />, color: "bg-green-700" },
-    { label: "Create trip", icon: <Plane size={22} />, color: "bg-red-700" },
   ];
 
   return (
