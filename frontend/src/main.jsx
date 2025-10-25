@@ -4,9 +4,12 @@ import './index.css'
 import App from './App'
 import Login from './pages/login.jsx'
 import HomePage from './pages/Home.jsx'
+import { Topbar } from './components/Topbar.jsx'
+import { Transactions } from './components/Transactions.jsx'
+import TransactionFilters from './components/Filters.jsx'
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <HomePage /> 
+    <Transactions /> 
   </StrictMode>,
 )
