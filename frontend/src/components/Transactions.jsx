@@ -9,7 +9,7 @@ export function Transactions() {
     {id: 1, date: "2024-06-01", type: "Expense", note: "Lunch at cafe", amount: "$15.00"},
   ];
   return (
-    <div className="bg-[#1d1d1d] rounded p-4 text-gray-200 ">
+    <div className="bg-[#1d1d1d] rounded-2xl p-4 text-gray-200 ">
       <div className="flex items-center justify-between p-4 bg-[#1d1d1d] rounded-2xl">  
       <h3 className="text-lg font-semibold mb-3">Transactions</h3>
         <button className="bg-green-600 text-white px-4 py-2 rounded-full hover:bg-green-700 transition">Add Transaction</button>
