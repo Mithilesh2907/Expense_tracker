@@ -4,6 +4,7 @@ import Home from "./pages/Home.jsx";
 import Login from "./pages/login.jsx";
 import { TransactionPage } from "./pages/TransactionPage.jsx";
 import HomePage from "./pages/Home.jsx";
+import { ReportPage } from "./pages/ReportPage.jsx";
 
 // Simple placeholder components for the new pages
 const CategoriesPage = () => <div>Categories Page</div>;
@@ -22,7 +23,7 @@ export default function App() {
             <Route path="/" element={<HomePage />} />
             <Route path="/transactions" element={<TransactionPage />} />
             <Route path="/categories" element={<CategoriesPage />} />
-            <Route path="/reports" element={<ReportsPage />} />
+            <Route path="/reports" element={<ReportPage />} />
             <Route path="/settings" element={<SettingsPage />} />
 
             {/* Note: The login page will also have the sidebar with this setup.
