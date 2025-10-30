@@ -1,7 +1,7 @@
 import { Routes, Route } from "react-router-dom";
 import { Sidebar } from "./components/Sidebar";
 import Home from "./pages/Home.jsx";
-import Login from "./pages/login.jsx";
+import Login from "./pages/Login.jsx";
 import { TransactionPage } from "./pages/TransactionPage.jsx";
 import HomePage from "./pages/Home.jsx";
 import { ReportPage } from "./pages/ReportPage.jsx";
