@@ -1,0 +1,95 @@
+# -----------------------------
+# Node & Backend
+# -----------------------------
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+dist/
+build/
+.env
+.env.*
+
+
+# -----------------------------
+# Frontend (React / Vite / Next)
+# -----------------------------
+# For Vite/React
+vite.config.js.timestamp*
+.cache/
+*.tsbuildinfo
+
+# Next.js
+.next/
+out/
+
+# React
+*.env.local
+*.env.development.local
+*.env.test.local
+*.env.production.local
+
+
+# -----------------------------
+# Logs
+# -----------------------------
+logs/
+*.log
+*.log.*
+debug.log
+
+
+# -----------------------------
+# OS-generated files
+# -----------------------------
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+
+# -----------------------------
+# IDE / Editor
+# -----------------------------
+# VS Code
+.vscode/
+.history/
+*.code-workspace
+
+# JetBrains
+.idea/
+*.iml
+
+
+# -----------------------------
+# Temporary files
+# -----------------------------
+*.tmp
+*.temp
+*.swp
+*.swo
+
+# -----------------------------
+# Compiled output
+# -----------------------------
+*.out
+*.exe
+
+# -----------------------------
+# Optional: Ignore backend uploads
+# -----------------------------
+uploads/
+public/uploads/
+
+
+# -----------------------------
+# Optional: Ignore DB files
+# -----------------------------
+*.sqlite
+*.db
