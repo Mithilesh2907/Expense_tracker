@@ -104,6 +104,7 @@
 
 
 import { Mail, LockKeyhole, LogIn, UserPlus } from "lucide-react"; // Import icons for a cleaner look
+import { Link } from "react-router-dom"; // Import Link for navigation
 
 export default function Login() {
   return (
@@ -191,13 +192,13 @@ export default function Login() {
               <p className="text-gray-500 text-sm">
                 Don't have an account?
               </p>
-              <a
-                href="#"
+              <Link
+                to="/signup"
                 className="flex items-center gap-2 text-md font-semibold text-[#00e093] hover:text-green-400 transition duration-300"
               >
-                <UserPlus size={20} />
+                {/* <UserPlus size={20} /> */}
                 Create New Account
-              </a>
+              </Link>
             </div>
             
           </form>

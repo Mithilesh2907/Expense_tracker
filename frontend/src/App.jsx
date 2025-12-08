@@ -5,6 +5,7 @@ import Login from "./pages/Login.jsx";
 import { TransactionPage } from "./pages/TransactionPage.jsx";
 import HomePage from "./pages/Home.jsx";
 import { ReportPage } from "./pages/ReportPage.jsx";
+import Signup from "./pages/Signup.jsx";
 
 // Simple placeholder components for the new pages
 const CategoriesPage = () => <div>Categories Page</div>;
@@ -29,6 +30,7 @@ export default function App() {
             {/* Note: The login page will also have the sidebar with this setup.
                 You might want a different layout for it later. */}
             <Route path="/login" element={<Login />} />
+            <Route path="/signup" element={<Signup />} />
           </Routes>
         </main>
       </div>
