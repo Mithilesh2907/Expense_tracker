@@ -105,8 +105,35 @@
 
 import { Mail, LockKeyhole, LogIn, UserPlus } from "lucide-react"; // Import icons for a cleaner look
 import { Link } from "react-router-dom"; // Import Link for navigation
+import { useState } from "react";
+import { supabase } from "../supabase.jsx";
 
 export default function Login() {
+
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  async function handleLogin(email, password) {
+    const {data, error} = await supabase.auth.signInWithPassword({
+      email,
+      password,
+    });
+
+    if (error) {
+      console.error("Error logging in:", error.message);
+      alert("Login failed: " + error.message);
+    } else {
+      console.log("Login successful:", data);
+      alert("Login successful!");
+      }
+  }
+
+  async function handleSubmit(e) {
+    e.preventDefault();
+
+    await handleLogin(email, password);
+  }
+
   return (
     // Outer container: dark background, min-height to cover the screen
     <div className="font-sans bg-[#131313] min-h-screen flex items-center justify-center p-4">
@@ -125,7 +152,7 @@ export default function Login() {
             <h1 className="text-3xl font-bold text-[#00e093]">TabZ Login</h1>
           </div>
 
-          <form className="space-y-6">
+          <form className="space-y-6" onsSubmit={handleSubmit}>
             
             {/* Email Input Field */}
             <div className="relative">
@@ -133,6 +160,8 @@ export default function Login() {
               <input
                 type="email"
                 placeholder="Email Address"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
                 // Dark theme input styling: darker background, no border, generous padding
                 className="w-full pl-10 pr-4 py-3 bg-[#131313] text-gray-300 rounded-lg shadow-inner outline-none transition duration-300 ease-in-out 
                            focus:ring-2 focus:ring-[#00e093] focus:bg-gray-900 placeholder-gray-500 border-none"
@@ -145,6 +174,8 @@ export default function Login() {
               <input
                 type="password"
                 placeholder="Password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
                 // Dark theme input styling
                 className="w-full pl-10 pr-4 py-3 bg-[#131313] text-gray-300 rounded-lg shadow-inner outline-none transition duration-300 ease-in-out 
                            focus:ring-2 focus:ring-[#00e093] focus:bg-gray-900 placeholder-gray-500 border-none"

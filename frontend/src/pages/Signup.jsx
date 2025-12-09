@@ -1,6 +1,43 @@
 import { Mail, LockKeyhole, User, UserPlus, LogIn } from "lucide-react"; 
+import { supabase } from "../supabase.jsx";
+import { useState } from "react";
+
+
 
 export default function Signup() {
+    const [fullName, setFullName] = useState("");
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+    const [confirmPassword, setConfirmPassword] = useState("");
+
+
+  async function handleSignup(email,password) {
+  const { data, error } = await supabase.auth.signUp({
+    email,
+    password,
+  });
+
+  if(error) {
+    console.error("Error signing up:", error.message);
+    alert("Signup failed: " + error.message);
+  } else {
+    console.log("Signup successful:", data);
+    alert("Signup successful! Please check your email to confirm your account.");
+  }
+}
+
+
+async function handleSubmit(e) {
+  e.preventDefault();
+
+  if(password!=confirmPassword) {
+    alert("Passwords do not match");
+    return;
+  }
+  await handleSignup(email, password);
+}
+
+
   return (
     // Outer container: dark background, min-height to cover the screen
     <div className="font-sans bg-[#131313] min-h-screen flex items-center justify-center p-4">
@@ -19,7 +56,7 @@ export default function Signup() {
             <h1 className="text-3xl font-bold text-[#00e093]">Create Account</h1>
           </div>
 
-          <form className="space-y-6">
+          <form className="space-y-6" onSubmit={handleSubmit}>
             
             {/* Full Name Input Field */}
             <div className="relative">
@@ -27,6 +64,8 @@ export default function Signup() {
               <input
                 type="text"
                 placeholder="Full Name"
+                value={fullName}
+                onChange={(e) => setFullName(e.target.value)}
                 // Dark theme input styling
                 className="w-full pl-10 pr-4 py-3 bg-[#131313] text-gray-300 rounded-lg shadow-inner outline-none transition duration-300 ease-in-out 
                            focus:ring-2 focus:ring-[#00e093] focus:bg-gray-900 placeholder-gray-500 border-none"
@@ -39,6 +78,8 @@ export default function Signup() {
               <input
                 type="email"
                 placeholder="Email Address"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
                 // Dark theme input styling
                 className="w-full pl-10 pr-4 py-3 bg-[#131313] text-gray-300 rounded-lg shadow-inner outline-none transition duration-300 ease-in-out 
                            focus:ring-2 focus:ring-[#00e093] focus:bg-gray-900 placeholder-gray-500 border-none"
@@ -51,6 +92,8 @@ export default function Signup() {
               <input
                 type="password"
                 placeholder="Password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
                 // Dark theme input styling
                 className="w-full pl-10 pr-4 py-3 bg-[#131313] text-gray-300 rounded-lg shadow-inner outline-none transition duration-300 ease-in-out 
                            focus:ring-2 focus:ring-[#00e093] focus:bg-gray-900 placeholder-gray-500 border-none"
@@ -63,6 +106,8 @@ export default function Signup() {
               <input
                 type="password"
                 placeholder="Confirm Password"
+                value={confirmPassword}
+                onChange={(e) => setConfirmPassword(e.target.value)}
                 // Dark theme input styling
                 className="w-full pl-10 pr-4 py-3 bg-[#131313] text-gray-300 rounded-lg shadow-inner outline-none transition duration-300 ease-in-out 
                            focus:ring-2 focus:ring-[#00e093] focus:bg-gray-900 placeholder-gray-500 border-none"
@@ -75,7 +120,7 @@ export default function Signup() {
                 type="submit"
                 // Primary button: using the theme's highlight color (#00e093)
                 className="w-full flex items-center justify-center gap-2 py-3 rounded-xl text-[#131313] font-semibold bg-[#00e093] shadow-lg shadow-green-900/50 
-                           hover:bg-green-400 transition duration-300 ease-in-out transform hover:scale-[1.02] focus:outline-none focus:ring-4 focus:ring-green-700/50"
+                           hover:bg-green-400 transition duration-300 ease-in-out transform hover:scale-[1.02] focus:outline-none focus:ring-4 focus:ring-green-700/50"          
               >
                 <UserPlus size={20} />
                 Register
