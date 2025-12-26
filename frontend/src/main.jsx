@@ -10,7 +10,7 @@ import { TransactionPage } from './pages/TransactionPage.jsx'
 import { BrowserRouter } from 'react-router-dom'
 import { Sidebar } from './components/Sidebar.jsx'
 import Login from './pages/Login.jsx'
-import { AuthProvider } from '../context.jsx'
+import { AuthProvider } from './context.jsx'
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
