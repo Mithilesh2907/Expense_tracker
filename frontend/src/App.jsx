@@ -12,6 +12,15 @@ const CategoriesPage = () => <div>Categories Page</div>;
 const ReportsPage = () => <div>Reports Page</div>;
 const SettingsPage = () => <div>Settings Page</div>;
 
+const ProtectedRoute = ({ children }) => {
+  const {user} = useAuth();
+
+  if (!user) {
+    return <Navigate to="/login" replace />;
+  }
+  return children;k
+}
+
 
 export default function App() {
   return (
