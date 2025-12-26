@@ -1,8 +1,6 @@
 import { Children, createContext, use, useContext } from "react";
 import { useEffect, useState } from "react";
-import { supabase } from "../supabaseClient";
-
-
+import { supabase } from "./supabase";
 
 const AuthContext = createContext(null);
 export default useAuth = () => useContext(AuthContext);
