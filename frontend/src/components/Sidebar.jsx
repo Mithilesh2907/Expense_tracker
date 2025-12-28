@@ -42,7 +42,8 @@
 import { Home, FileText, FolderOpenDot, ChartBar, Settings, LogOut as LogOutIcon } from "lucide-react";
 import { NavLink } from "react-router-dom"; // Import NavLink
 import { ProfileCard } from "./ProfileCard";
-
+import { supabase } from "../supabase";
+import { useNavigate } from "react-router-dom";
 
 export function Sidebar() {
   // Add a 'path' to each menu item for routing
@@ -54,6 +55,13 @@ export function Sidebar() {
     { name: "Reports", icon: <ChartBar size={20} />, path: "/reports" },
     { name: "Settings", icon: <Settings size={20} />, path: "/settings" },
   ];
+
+  const navigate = useNavigate();
+
+   async function handleLogout() {
+      await supabase.auth.signOut();
+      navigate("/login");
+   }
 
   return (
     <div className="flex flex-col w-64 min-h-screen bg-[#131313] text-gray-300 p-4">
@@ -78,7 +86,9 @@ export function Sidebar() {
             </NavLink>
           ))}
           {/* Logout should be a button, not a link */}
-           <div className="flex items-center gap-3 px-4 py-2 rounded-xl cursor-pointer transition hover:bg-[#1d1d1d]">
+           <div
+              onClick={handleLogout}
+              className="flex items-center gap-3 px-4 py-2 rounded-xl cursor-pointer transition hover:bg-[#1d1d1d]">
              <LogOutIcon size={20} />
              <span>Logout</span>
            </div>
