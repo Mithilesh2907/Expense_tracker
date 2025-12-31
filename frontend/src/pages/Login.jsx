@@ -152,7 +152,7 @@ export default function Login() {
             <h1 className="text-3xl font-bold text-[#00e093]">TabZ Login</h1>
           </div>
 
-          <form className="space-y-6" onsSubmit={handleSubmit}>
+          <form className="space-y-6" onSubmit={handleSubmit}>
             
             {/* Email Input Field */}
             <div className="relative">
