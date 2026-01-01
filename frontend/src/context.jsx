@@ -1,5 +1,4 @@
-import { children, createContext, use, useContext } from "react";
-import { useEffect, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 import { supabase } from "./supabase";
 
 const AuthContext = createContext(null);
@@ -39,7 +38,10 @@ export const AuthProvider = ({ children }) => {
 
     return (
         <AuthContext.Provider value = {value}>
-            {loading ? <div>Loading Application......</div>: children}
+            {loading ?
+             (<div className="flex items-center justify-center min-h-screen text-gray-400">
+                Loading Application......
+                </div>): children}
         </AuthContext.Provider>
     );
 };

@@ -107,11 +107,14 @@ import { Mail, LockKeyhole, LogIn, UserPlus } from "lucide-react"; // Import ico
 import { Link } from "react-router-dom"; // Import Link for navigation
 import { useState } from "react";
 import { supabase } from "../supabase.jsx";
+import { useNavigate } from "react-router-dom";
 
 export default function Login() {
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+
+  const navigate =  useNavigate();
 
   async function handleLogin(email, password) {
     const {data, error} = await supabase.auth.signInWithPassword({
@@ -123,6 +126,7 @@ export default function Login() {
       console.error("Error logging in:", error.message);
       alert("Login failed: " + error.message);
     } else {
+      navigate("/",{ replace: true});
       console.log("Login successful:", data);
       alert("Login successful!");
       }
