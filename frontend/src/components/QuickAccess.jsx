@@ -1,5 +1,6 @@
-import { useState } from "react";
+import { use, useState } from "react";
 import { PlusCircle, FilePlus2, BarChart3, X } from "lucide-react";
+import { addExpense } from "../../services/expenseServices";
 
 
 export function QuickAccess() {
@@ -11,6 +12,14 @@ export function QuickAccess() {
     { label: "Add receipt", icon: <FilePlus2 size={22} />, color: "bg-purple-700",onClick: () => setShowReceiptModal(true) },
     { label: "Create report", icon: <BarChart3 size={22} />, color: "bg-green-700", onClick: () => alert("Create report coming soon ") },
   ];
+
+  const [expenseData, setExpenseData] = useState({
+    amount: "",
+    type: "Expense",
+    category: "Travel",
+    note: "",
+    date: "",
+  });
 
   return (
     <>
@@ -46,32 +55,66 @@ export function QuickAccess() {
           <h2 className="text-lg font-semibold mb-4">  Add New Expense</h2>
           <form
           className="flex flex-col gap-4"
-          onSubmit={(e)=>{
+          onSubmit={async (e)=>{
             e.preventDefault()
-            console.log("expense added")
-            setShowExpenseModal(false)
+
+            try {
+              await addExpense(expenseData)
+              setShowExpenseModal(false)
+            } catch (error) {
+              console.error(error)
+              alert("Failed to add expense: " + error.message)
+            }
           }
           }
           >
-            <input type="text" placeholder="Subject" className="bg-[#2a2a2a] rounded-xl p-2 outline-none" required/>
-            <input type="number" placeholder="Amount" className="bg-[#2a2a2a] rounded-xl p-2 outline-none" required/>
 
-            <select className="bg-[#2a2a2a] rounded-xl p-2 outline-none">
+            <input type="text" placeholder="Subject" className="bg-[#2a2a2a] rounded-xl p-2 outline-none" required/>
+            <input
+              type="number"
+              placeholder="Amount" 
+              className="bg-[#2a2a2a] rounded-xl p-2 outline-none"
+              value={expenseData.amount}
+              onChange={(e) => setExpenseData({...expenseData, amount: e.target.value })}
+              required
+            />
+
+            <select 
+              className="bg-[#2a2a2a] rounded-xl p-2 outline-none"
+              value={expenseData.type}
+              onChange={(e) => setExpenseData({ ...expenseData, type: e.target.value })}
+            >
               <option>Expense</option>
               <option>Income</option>
             </select>
 
             <input type="text" placeholder="Employee" className="bg-[#2a2a2a] rounded-xl p-2 outline-none"/>
-            <input type="date" className="bg-[#2a2a2a] rounded-xl p-2 outline-none"/>
+            <input
+              type="date" 
+              className="bg-[#2a2a2a] rounded-xl p-2 outline-none"
+              value={expenseData.date}
+              onChange={(e) => setExpenseData({...expenseData, date: e.target.value})}
+              required
+            />
 
-            <select className="bg-[#2a2a2a] rounded-xl p-2 outline-none">
+            <select
+              className="bg-[#2a2a2a] rounded-xl p-2 outline-none"
+              value={expenseData.category}
+              onChange={(e) => setExpenseData({...expenseData, category: e.target.value})}
+              required
+            >
               <option>Travel</option>
               <option>Food</option>
               <option>Office</option>
               <option>Other</option>
             </select>
 
-            <textarea placeholder="Notes (optional)" className="bg-[#2a2a2a] rounded-xl p-2 outline-none"></textarea>
+            <textarea
+              placeholder="Notes (optional)" 
+              className="bg-[#2a2a2a] rounded-xl p-2 outline-none"
+              value={expenseData.note}
+              onChange={(e) => setExpenseData({...expenseData, note: e.target.value})}
+            />
 
             <div className="flex justify-end gap-3 mt-2">
               <button
