@@ -3,14 +3,6 @@ import TransactionFilters from "./Filters";
 import { fetchAllExpenses } from "../../services/expenseServices";
 
 export function Transactions() {
-  // const transactions = [
-  //   {id: 1, date: "2024-06-01", type: "Expense", note: "Lunch at cafe", amount: "$15.00"},
-  //   {id: 1, date: "2024-06-01", type: "Expense", note: "Lunch at cafe", amount: "$15.00"},
-  //   {id: 1, date: "2024-06-01", type: "Expense", note: "Lunch at cafe", amount: "$15.00"},
-  //   {id: 1, date: "2024-06-01", type: "Expense", note: "Lunch at cafe", amount: "$15.00"},
-  //   {id: 1, date: "2024-06-01", type: "Expense", note: "Lunch at cafe", amount: "$15.00"},
-  // ];
-
   const [ transactions, setTransactions] = useState([])
   const [ loading, setLoading] = useState(true)
 
