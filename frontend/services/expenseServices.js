@@ -41,3 +41,17 @@ export async function fetchExpenses(limit = 5) {
 
     return data;
 }
+
+
+
+export async function fetchAllExpenses() {
+    const { data, error } =  await supabase
+        .from("expenses")
+        .select("*")
+
+    if (error) {
+        throw error;
+    }
+
+    return data;
+}
