@@ -52,7 +52,6 @@ export default function App() {
           </main>
         </AuthProvider>
 
-        {/* Uncomment the Sidebar. It will now appear on all pages */}
         {/* <Sidebar />
 
         <main className="flex-1 p-6">

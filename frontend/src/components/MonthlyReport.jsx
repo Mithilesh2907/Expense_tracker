@@ -1,22 +1,20 @@
 import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer } from "recharts";
 
-export function MonthlyReport() {
-  const teamData = [
-    { name: "PJ", spending: 80 },
-    { name: "SJ", spending: 40 },
-    { name: "MB", spending: 75 },
-    { name: "IS", spending: 55 },
-    { name: "DW", spending: 60 },
-    { name: "BS", spending: 90 },
-  ];
+export function MonthlyReport({ expenses }) {
+  const last7days = Array.from({length:7}).map((_, i) => {
+    const d = new Date()
+    d.setDate(d.getDate() - (6-i))
+    return d
+  })
 
-  const expenseData = [
-    { name: "Accommodation", value: 40 },
-    { name: "Comms", value: 15 },
-    { name: "Services", value: 100 },
-    { name: "Food", value: 80 },
-    { name: "Fuel", value: 30 },
-  ];
+  const weeklyIncomeExpenseData = last7days.map((dayDate) => {
+    let income = 0
+    let expense = 0
+
+  if (expenseData == currentDay) {
+    if (e.type == "Income") income += e.amount
+  }
+  })
 
   return (
     <div className="bg-[#1d1d1d] rounded-2xl p-4 text-gray-200 mt-4">

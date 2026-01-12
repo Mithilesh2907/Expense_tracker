@@ -40,7 +40,6 @@ export function QuickAccess() {
     </div>
 
 
-{/* Add new expense popup */}
 
     {showExpeseModal && (
       <div className="fixed inset-0 bg-gradient-to-b from-black/70 to-[#111]/80 backdrop-blur-sm flex items-center justify-center z-50">
@@ -140,7 +139,6 @@ export function QuickAccess() {
     }
 
 
- {/* Upload receipt popup */}
 
     {showReceiptModal && (  
         <div className="fixed inset-0 bg-gradient-to-b from-black/70 to-[#111]/80 backdrop-blur-sm flex items-center justify-center z-50">
